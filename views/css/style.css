@@ -1,0 +1,426 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@font-face {
+  font-family: "GB";
+  src: url(../fonts/GorditaBold.otf);
+}
+.aviso, .title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a, button, [type=submit] {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+select, option, button, input {
+  outline: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  background: url(../images/fondo.jpg) no-repeat;
+  background-position: bottom right;
+  min-height: 100vh;
+}
+
+body, html {
+  overflow-x: hidden;
+}
+
+.contenedor {
+  width: min(90%, 1400px);
+  margin-inline: auto;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.row.start {
+  align-items: flex-start;
+}
+.row.center {
+  justify-content: center;
+  gap: 25px;
+}
+
+main, header, footer, section {
+  width: 100%;
+}
+
+header {
+  background: none;
+  margin-bottom: 20px;
+  padding-block: 20px;
+}
+
+.auspicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+.auspicio p {
+  color: #005CA9;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+.auspicio img {
+  width: min(100%, 110px);
+}
+
+.title {
+  background: #F5F5F5;
+  min-height: 170px;
+  position: relative;
+  padding-block: 2rem;
+}
+.title h1 {
+  text-align: center;
+  font-family: "GB";
+  color: #005CA9;
+}
+
+.pregunta button, .modal a, .modal button, .init button {
+  display: block;
+  border: 1px solid #005CA9;
+  border-radius: 5px;
+  min-height: 50px;
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  background: #005CA9;
+  width: 100%;
+  color: white;
+}
+
+.datos {
+  padding-block: 3rem;
+}
+.datos:has(.with_info) {
+  padding-block: 1rem;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.datos_personales {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  width: min(100%, 1200px);
+  margin-inline: auto;
+  border-radius: 10px;
+  padding: 2rem 3.5rem;
+}
+.datos_personales > p {
+  margin-bottom: 14px;
+  font-weight: bold;
+}
+.datos_personales:has(.with_info) {
+  box-shadow: none;
+  border-radius: 0;
+}
+.datos button, .datos p, .datos label, .datos input {
+  font-family: "Inter", sans-serif;
+}
+.datos_form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 190px;
+  grid-gap: 20px;
+  align-items: flex-end;
+}
+.datos_form div {
+  width: 100%;
+}
+.datos_form label {
+  color: #66666D;
+  display: block;
+  width: 100%;
+  margin-bottom: 7px;
+  text-align: left;
+}
+.datos_form input, .datos_form button {
+  width: 100%;
+  border: 1px solid;
+  border-radius: 5px;
+  min-height: 50px;
+  font-size: 1rem;
+}
+.datos_form input {
+  color: #C7C7C8;
+  border-color: #66666D;
+  padding-inline: 10px;
+}
+.datos_form input::-moz-placeholder {
+  color: #C7C7C8;
+}
+.datos_form input::placeholder {
+  color: #C7C7C8;
+}
+.datos_form input:disabled {
+  background: #D6D6D6;
+  border-color: #D6D6D6;
+  color: #141414;
+}
+.datos_form input:disabled::-moz-placeholder {
+  color: rgba(20, 20, 20, 0.3);
+}
+.datos_form input:disabled::placeholder {
+  color: rgba(20, 20, 20, 0.3);
+}
+.datos_form button {
+  border-color: #005CA9;
+  background: #005CA9;
+  width: 100%;
+  color: white;
+}
+.datos_form.with_info {
+  grid-template-columns: repeat(2, 1fr);
+}
+.datos_form.with_info label {
+  display: none;
+}
+
+.aviso {
+  padding-block: 1rem;
+  background: white;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  min-height: 132px;
+}
+.aviso p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  color: #000;
+  font-size: 1rem;
+}
+.aviso.fixed {
+  position: relative;
+}
+.aviso.finalizado {
+  padding-block: 0.5rem;
+  min-height: 98px;
+}
+
+.timer {
+  width: 200px;
+}
+.timer p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+.timer_box {
+  padding: 4px 10px;
+  width: 100%;
+  background: #04477B;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 10px;
+}
+.timer img {
+  width: 38px;
+  height: 38px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
+}
+.timer span {
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 26px;
+}
+
+.init {
+  padding-top: 5rem;
+}
+.init button {
+  max-width: 200px;
+  margin: 0 auto 0;
+}
+
+.cuestionario {
+  padding: 2rem 0;
+  min-height: 80vh;
+}
+.cuestionario_preguntas {
+  width: 230px;
+}
+.cuestionario_preguntas h1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 900;
+  color: #005CA9;
+}
+.cuestionario_preguntas div {
+  width: 100%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 8px;
+}
+.cuestionario_preguntas button {
+  width: 100%;
+  height: auto;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  background: #90AFC7;
+  border: 1px solid #90AFC7;
+  color: white;
+  border-radius: 5px;
+}
+.cuestionario_preguntas button p {
+  font-size: 1.1em;
+}
+.cuestionario_respuestas {
+  width: calc(100% - 285px);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  display: none;
+}
+.modal.active {
+  display: block;
+}
+.modal_bg {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  background: rgba(30, 30, 30, 0.95);
+}
+.modal_box {
+  position: absolute;
+  top: 50%;
+  padding: 1rem;
+  z-index: 12;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 500px;
+  min-height: 260px;
+  border-radius: 12px;
+  background: #D9D9D9;
+  display: grid;
+  place-items: center;
+}
+.modal_btn {
+  position: absolute;
+  right: -36px;
+  top: -36px;
+  z-index: 13;
+  background: #D9D9D9;
+  color: #000;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 30px;
+  transform: rotate(45deg);
+}
+.modal p {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.modal_content {
+  width: 100%;
+}
+.modal_content div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.modal a, .modal button {
+  text-decoration: none;
+  max-width: 200px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pregunta {
+  width: 100%;
+}
+.pregunta h2 {
+  text-align: left;
+  font-family: "Inter", sans-serif;
+  font-weight: bold;
+}
+.pregunta .options {
+  margin-top: 28px;
+}
+.pregunta .options .opt {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.pregunta .options .opt input {
+  width: 24px;
+  height: 24px;
+}
+.pregunta .options .opt label {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.pregunta .options .opt:not(:last-child) {
+  margin-bottom: 10px;
+}
+.pregunta button {
+  margin-top: 30px;
+  max-width: 200px;
+}
+
+.resultado {
+  padding: 3rem 0;
+}
+.resultado_txt {
+  text-align: center;
+}
+.resultado p {
+  font-family: "Inter", sans-serif;
+  font-size: 1.1rem;
+}
+.resultado p.msg {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.resultado p strong, .resultado p b {
+  color: #00752F;
+  font-size: 1.25rem;
+}
+.resultado span {
+  font-family: "GB";
+  color: #005CA9;
+  display: block;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=style.css.map */
