@@ -2,7 +2,7 @@
     <div class="contenedor">
         <div class="row start">
             <div class="col">
-                <img src="<?php echo IMG; ?>/logo-sociedad.svg" alt="Sociedad Peruana de Endocrinología" title="Sociedad Peruana de Endocrinología" class="logo">
+                <img src="<?php echo IMG; ?>/logo-sociedad.png" alt="Sociedad Peruana de Endocrinología" title="Sociedad Peruana de Endocrinología" class="logo">
             </div>
             <div class="col">
                 <div class="auspicio">

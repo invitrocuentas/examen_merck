@@ -9,3 +9,7 @@
     <script>const SERVERURL = '<?php echo SERVERURL;?>';</script>
 </head>
 <body>
+
+<div class="loader">
+    <div></div>
+</div>

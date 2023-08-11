@@ -31,6 +31,10 @@ body {
   min-height: 100vh;
 }
 
+img {
+  vertical-align: top;
+}
+
 body, html {
   overflow-x: hidden;
 }
@@ -38,6 +42,11 @@ body, html {
 .contenedor {
   width: min(90%, 1400px);
   margin-inline: auto;
+}
+@media (max-width: 500px) {
+  .contenedor {
+    width: min(94%, 1400px);
+  }
 }
 
 .row {
@@ -63,9 +72,26 @@ header {
   margin-bottom: 20px;
   padding-block: 20px;
 }
+header .logo {
+  max-width: 320px;
+}
 @media (max-width: 1150px) {
   header .logo {
     max-width: 250px;
+  }
+}
+@media (max-width: 500px) {
+  header .logo {
+    max-width: 200px;
+  }
+}
+@media (max-width: 390px) {
+  header {
+    padding-block: 14px;
+    margin-bottom: 14px;
+  }
+  header .logo {
+    max-width: 180px;
   }
 }
 
@@ -82,6 +108,14 @@ header {
 }
 .auspicio img {
   width: min(100%, 110px);
+}
+@media (max-width: 390px) {
+  .auspicio p {
+    font-size: 14px;
+  }
+  .auspicio img {
+    width: min(100%, 90px);
+  }
 }
 
 .title {
@@ -102,7 +136,7 @@ header {
   color: #005CA9;
 }
 
-.disclaimer_txt button, .pregunta button, .modal a, .modal button, .init button {
+.disclaimer_txt button, .pregunta button, .modal a, .modal button, .modal_2 a, .modal_2 button, .init button {
   display: block;
   border: 1px solid #005CA9;
   border-radius: 5px;
@@ -180,7 +214,7 @@ header {
   font-size: 1rem;
 }
 .datos_form input {
-  color: #C7C7C8;
+  color: #000;
   border-color: #66666D;
   padding-inline: 10px;
 }
@@ -261,7 +295,7 @@ header {
 }
 
 .timer {
-  width: 200px;
+  width: 220px;
 }
 .timer p {
   font-family: "Inter", sans-serif;
@@ -293,7 +327,7 @@ header {
   color: white;
   font-family: "Inter", sans-serif;
   font-weight: 500;
-  font-size: 26px;
+  font-size: 23px;
 }
 
 .init {
@@ -389,7 +423,11 @@ header {
   }
 }
 
-.modal {
+.mx-auto {
+  margin-inline: auto;
+}
+
+.modal, .modal_2 {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -397,16 +435,16 @@ header {
   z-index: 10;
   display: none;
 }
-.modal.active {
+.modal.active, .modal_2.active {
   display: block;
 }
-.modal_bg {
+.modal_bg, .modal_2_bg {
   position: absolute;
   inset: 0;
   z-index: 11;
   background: rgba(30, 30, 30, 0.95);
 }
-.modal_box {
+.modal_box, .modal_2_box {
   position: absolute;
   top: 50%;
   padding: 1rem;
@@ -421,7 +459,7 @@ header {
   display: grid;
   place-items: center;
 }
-.modal_btn {
+.modal_btn, .modal_2_btn {
   position: absolute;
   right: -36px;
   top: -36px;
@@ -437,23 +475,23 @@ header {
   font-size: 30px;
   transform: rotate(45deg);
 }
-.modal p {
+.modal p, .modal_2 p {
   font-family: "Inter", sans-serif;
   font-weight: 800;
   text-align: center;
   margin-bottom: 30px;
 }
-.modal_content {
+.modal_content, .modal_2_content {
   width: 100%;
 }
-.modal_content div {
+.modal_content div, .modal_2_content div {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
 }
-.modal a, .modal button {
+.modal a, .modal button, .modal_2 a, .modal_2 button {
   text-decoration: none;
   max-width: 200px;
   text-align: center;
@@ -597,4 +635,49 @@ header {
 .disclaimer .w-100 {
   margin-top: 20px;
   width: 100%;
+}
+
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100vh;
+  display: none;
+}
+.loader.active {
+  display: block;
+}
+.loader div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 100%;
+  max-width: 100px;
+  aspect-ratio: 1/1;
+  border: 8px solid #005CA9;
+  border-left: none;
+  border-top: none;
+  animation: rotate 4s normal linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate3d(0, 0, 1, 0deg);
+  }
+  25% {
+    transform: rotate3d(0, 0, 1, 90deg);
+  }
+  50% {
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+  75% {
+    transform: rotate3d(0, 0, 1, 270deg);
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 360deg);
+  }
 }/*# sourceMappingURL=style.css.map */

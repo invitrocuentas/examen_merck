@@ -95,4 +95,14 @@ class RegistroModel
         $stmt = "";
     }
 
+    public static function guardarResultadosMdl($rc, $nf, $id_alumno)
+    {
+        $stmt = Conexion::conectar()->prepare("UPDATE respuestas SET respuestas_acertadas=:respuestas_acertadas, nota_final=:nota_final WHERE id_alumno=:id_alumno");
+        $stmt -> bindParam(":respuestas_acertadas", $rc, PDO::PARAM_STR);
+        $stmt -> bindParam(":nota_final", $nf, PDO::PARAM_STR);
+        $stmt -> bindParam(":id_alumno", $id_alumno, PDO::PARAM_INT);
+        return $stmt->execute() ? true : false;
+        $stmt = "";
+    }
+
 }

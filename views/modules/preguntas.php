@@ -36,6 +36,20 @@
     </div>
 </div>
 
+<div class="modal_2">
+    <div class="modal_2_bg modal_2_close"></div>
+    <div class="modal_2_box">
+        <div class="modal_2_btn modal_2_close">+</div>
+        <div class="modal_2_content">
+            <p>¿Seguro que quieres finalizar el examen?<br>Aún tienes preguntas pendientes por responder</p>
+            <div>
+                <button id="toFinishExamWithoutFullQuestion">Si, finalizar</button>
+                <button class="modal_2_close">No, volver al examen.</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <section class="aviso fixed">
     <div class="contenedor">
         <div class="row">
@@ -78,154 +92,154 @@
             <div class="cuestionario_preguntas">
                 <h1>PREGUNTAS</h1>
                 <div>
-                    <button type="button" class="q_1 <?php echo in_array(1, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_1 <?php echo in_array(1, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>1</p>
                     </button>
-                    <button type="button" class="q_2 <?php echo in_array(2, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_2 <?php echo in_array(2, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>2</p>
                     </button>
-                    <button type="button" class="q_3 <?php echo in_array(3, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_3 <?php echo in_array(3, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>3</p>
                     </button>
-                    <button type="button" class="q_4 <?php echo in_array(4, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_4 <?php echo in_array(4, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>4</p>
                     </button>
-                    <button type="button" class="q_5 <?php echo in_array(5, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_5 <?php echo in_array(5, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>5</p>
                     </button>
-                    <button type="button" class="q_6 <?php echo in_array(6, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_6 <?php echo in_array(6, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>6</p>
                     </button>
-                    <button type="button" class="q_7 <?php echo in_array(7, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_7 <?php echo in_array(7, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>7</p>
                     </button>
-                    <button type="button" class="q_8 <?php echo in_array(8, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_8 <?php echo in_array(8, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>8</p>
                     </button>
-                    <button type="button" class="q_9 <?php echo in_array(9, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_9 <?php echo in_array(9, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>9</p>
                     </button>
-                    <button type="button" class="q_10 <?php echo in_array(10, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_10 <?php echo in_array(10, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>10</p>
                     </button>
-                    <button type="button" class="q_11 <?php echo in_array(11, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_11 <?php echo in_array(11, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>11</p>
                     </button>
-                    <button type="button" class="q_12 <?php echo in_array(12, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_12 <?php echo in_array(12, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>12</p>
                     </button>
-                    <button type="button" class="q_13 <?php echo in_array(13, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_13 <?php echo in_array(13, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>13</p>
                     </button>
-                    <button type="button" class="q_14 <?php echo in_array(14, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_14 <?php echo in_array(14, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>14</p>
                     </button>
-                    <button type="button" class="q_15 <?php echo in_array(15, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_15 <?php echo in_array(15, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>15</p>
                     </button>
-                    <button type="button" class="q_16 <?php echo in_array(16, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_16 <?php echo in_array(16, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>16</p>
                     </button>
-                    <button type="button" class="q_17 <?php echo in_array(17, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_17 <?php echo in_array(17, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>17</p>
                     </button>
-                    <button type="button" class="q_18 <?php echo in_array(18, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_18 <?php echo in_array(18, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>18</p>
                     </button>
-                    <button type="button" class="q_19 <?php echo in_array(19, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_19 <?php echo in_array(19, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>19</p>
                     </button>
-                    <button type="button" class="q_20 <?php echo in_array(20, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_20 <?php echo in_array(20, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>20</p>
                     </button>
-                    <button type="button" class="q_21 <?php echo in_array(21, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_21 <?php echo in_array(21, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>21</p>
                     </button>
-                    <button type="button" class="q_22 <?php echo in_array(22, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_22 <?php echo in_array(22, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>22</p>
                     </button>
-                    <button type="button" class="q_23 <?php echo in_array(23, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_23 <?php echo in_array(23, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>23</p>
                     </button>
-                    <button type="button" class="q_24 <?php echo in_array(24, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_24 <?php echo in_array(24, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>24</p>
                     </button>
-                    <button type="button" class="q_25 <?php echo in_array(25, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_25 <?php echo in_array(25, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>25</p>
                     </button>
-                    <button type="button" class="q_26 <?php echo in_array(26, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_26 <?php echo in_array(26, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>26</p>
                     </button>
-                    <button type="button" class="q_27 <?php echo in_array(27, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_27 <?php echo in_array(27, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>27</p>
                     </button>
-                    <button type="button" class="q_28 <?php echo in_array(28, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_28 <?php echo in_array(28, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>28</p>
                     </button>
-                    <button type="button" class="q_29 <?php echo in_array(29, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_29 <?php echo in_array(29, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>29</p>
                     </button>
-                    <button type="button" class="q_30 <?php echo in_array(30, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_30 <?php echo in_array(30, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>30</p>
                     </button>
-                    <button type="button" class="q_31 <?php echo in_array(31, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_31 <?php echo in_array(31, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>31</p>
                     </button>
-                    <button type="button" class="q_32 <?php echo in_array(32, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_32 <?php echo in_array(32, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>32</p>
                     </button>
-                    <button type="button" class="q_33 <?php echo in_array(33, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_33 <?php echo in_array(33, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>33</p>
                     </button>
-                    <button type="button" class="q_34 <?php echo in_array(34, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_34 <?php echo in_array(34, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>34</p>
                     </button>
-                    <button type="button" class="q_35 <?php echo in_array(35, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_35 <?php echo in_array(35, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>35</p>
                     </button>
-                    <button type="button" class="q_36 <?php echo in_array(36, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_36 <?php echo in_array(36, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>36</p>
                     </button>
-                    <button type="button" class="q_37 <?php echo in_array(37, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_37 <?php echo in_array(37, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>37</p>
                     </button>
-                    <button type="button" class="q_38 <?php echo in_array(38, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_38 <?php echo in_array(38, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>38</p>
                     </button>
-                    <button type="button" class="q_39 <?php echo in_array(39, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_39 <?php echo in_array(39, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>39</p>
                     </button>
-                    <button type="button" class="q_40 <?php echo in_array(40, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_40 <?php echo in_array(40, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>40</p>
                     </button>
-                    <button type="button" class="q_41 <?php echo in_array(41, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_41 <?php echo in_array(41, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>41</p>
                     </button>
-                    <button type="button" class="q_42 <?php echo in_array(42, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_42 <?php echo in_array(42, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>42</p>
                     </button>
-                    <button type="button" class="q_43 <?php echo in_array(43, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_43 <?php echo in_array(43, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>43</p>
                     </button>
-                    <button type="button" class="q_44 <?php echo in_array(44, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_44 <?php echo in_array(44, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>44</p>
                     </button>
-                    <button type="button" class="q_45 <?php echo in_array(45, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_45 <?php echo in_array(45, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>45</p>
                     </button>
-                    <button type="button" class="q_46 <?php echo in_array(46, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_46 <?php echo in_array(46, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>46</p>
                     </button>
-                    <button type="button" class="q_47 <?php echo in_array(47, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_47 <?php echo in_array(47, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>47</p>
                     </button>
-                    <button type="button" class="q_48 <?php echo in_array(48, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_48 <?php echo in_array(48, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>48</p>
                     </button>
-                    <button type="button" class="q_49 <?php echo in_array(49, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_49 <?php echo in_array(49, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>49</p>
                     </button>
-                    <button type="button" class="q_50 <?php echo in_array(50, $rptas_cntstds) ? 'active' : ''; ?>">
+                    <button type="button" class="q_button q_50 <?php echo in_array(50, $rptas_cntstds) ? 'active' : ''; ?>">
                         <p>50</p>
                     </button>
                 </div>

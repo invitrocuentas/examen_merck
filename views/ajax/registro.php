@@ -22,6 +22,11 @@ class Registro{
         echo json_encode($respuesta);
     }
 
+    public function subirResultadosAjax(){
+        $respuesta = RegistroController::guardarResultadosCtrol($this->vars);
+        echo json_encode($respuesta);
+    }
+
 }
 
 $e = new Registro();
@@ -30,6 +35,12 @@ if($_POST['validar'] == 'guardarAlumno'){
     $e->vars = $_POST;
     $e->guardarAlumnoAjax();
 }
+
+if($_POST['validar'] == 'subirResultados'){
+    $e->vars = $_POST;
+    $e->subirResultadosAjax();
+}
+
 
 if($_POST['validar'] == 'guardarTiempo'){
     $e->vars = $_POST;

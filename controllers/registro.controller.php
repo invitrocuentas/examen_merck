@@ -81,4 +81,13 @@ class RegistroController
         return $sumatoria;
     }
 
+    public static function guardarResultadosCtrol($vars)
+    {
+        $rc = $vars['respuestas_acertadas'];
+        $nf = $vars['nota_final'];
+        $id_alumno = intval($vars['id_alumno']);
+        $respuesta = RegistroModel::guardarResultadosMdl($rc, $nf, $id_alumno);
+        return $respuesta;
+    }
+
 }

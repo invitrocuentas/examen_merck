@@ -36,7 +36,7 @@
     }
 
     function restarHoras($hora1, $hora2) {
-        $formato = 'H:i'; // Formato de horas
+        $formato = 'H:i:s'; // Formato de horas
     
         $time1 = DateTime::createFromFormat($formato . ' \h\r\s', $hora1);
         $time2 = DateTime::createFromFormat($formato . ' \h\r\s', $hora2);
@@ -45,12 +45,13 @@
     
         $horas = $interval->h;
         $minutos = $interval->i;
+        $segundos = $interval->s;
     
-        $resultado = sprintf('%02d:%02d hrs', $horas, $minutos);
+        $resultado = sprintf('%02d:%02d:%02d hrs', $horas, $minutos, $segundos);
         return $resultado;
     }
     
-    $hora1 = '02:00 hrs';
+    $hora1 = '02:00:00 hrs';
     $hora2 = $t1['timer'];
     $timer = restarHoras($hora1, $hora2);
     
@@ -63,7 +64,7 @@
                 <p>Formulario finalizado en:</p>
             </div>
             <div class="col">
-                <div class="timer">
+                <div class="timer" style="margin-top:0">
                     <div class="timer_box">
                         <img src="<?php echo IMG; ?>/icon-reloj.svg" alt="Temporizador" title="Temporizador">
                         <span><?php echo $timer; ?></span>
@@ -85,12 +86,18 @@
 
     $nota_final = round($respuestas_acertadas*0.4);
 
+    /*$upload = $t->guardarResultadosCtrol($respuestas_acertadas, $nota_final, intval($alumno['id']));
+    var_dump($upload);*/
+    //echo $alumno['id'];
+
 ?>
 
 <section class="resultado">
     <div class="contenedor">
         <div class="resultado_txt">
             <p class="msg">¡Culminó la prueba!</p>
+            <p>Los resultados serán enviados por correo.</p>
+            <br><br>
             <div class="flex">
                 <div>
                     <p>Respuestas acertadas:</p>
@@ -105,3 +112,22 @@
         </div>
     </div>
 </section>
+
+<script>
+    function subirResultados(){
+        const formSend = new FormData()
+        formSend.append('id_alumno', parseInt(<?php echo $alumno['id'] ?>))
+        formSend.append('respuestas_acertadas', parseInt(<?php echo $respuestas_acertadas; ?>))
+        formSend.append('nota_final', parseInt(<?php echo $nota_final; ?>))
+        formSend.append('validar', 'subirResultados')
+        fetch('./views/ajax/registro.php', {
+            method: 'POST',
+            body: formSend
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+    window.onpaint = subirResultados();
+</script>
