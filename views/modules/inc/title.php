@@ -16,6 +16,6 @@
 
 <section class="title">
     <div class="contenedor">
-        <h1>CURSO LOREM IPSUM<br>"LOREM IPSUM LOREM IPSUM LOREM IPSUM"</h1>
+        <h1>EXAMEN VIRTUAL<br>CURSO INTEGRAL DE REPRODUCCIÓN ASISTIDA</h1>
     </div>
 </section>

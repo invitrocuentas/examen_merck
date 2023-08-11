@@ -13,3 +13,7 @@
 <div class="loader">
     <div></div>
 </div>
+
+<a href="https://wa.link/8l6iv0" class="wsp" target="_blank">
+    <img src="<?php echo IMG; ?>/icon_whatsapp.svg" alt="Whatsapp" title="Whatsapp">
+</a>

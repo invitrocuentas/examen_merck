@@ -26,7 +26,24 @@ if(document.querySelector('.datos_form')){
         .then(res => res.json())
         .then(data => {
 
-            if(data){
+            console.log(data);
+
+            if(data == 'ya lo dio'){
+                localStorage.removeItem('startTime');
+                loader.classList.remove('active');
+
+                alert('Ya completó el examen.')
+            }
+
+            if(data == 'sin completar'){
+                loader.classList.remove('active');
+
+                setTimeout(function(){
+                    window.location.href = SERVERURL+'preguntas/1'
+                }, 500)
+            }
+
+            if(data == true){
                 localStorage.removeItem('startTime');
                 loader.classList.remove('active');
                 
@@ -46,10 +63,25 @@ if(document.querySelector('#init')){
         e.preventDefault();
         loader.classList.add('active')
 
-        setTimeout(() => {
-            loader.classList.remove('active')
-            window.location.href = SERVERURL+'preguntas/1'
-        }, 500);
+        let id_alumno = parseInt(document.querySelector('input[name="id_alumno"]').value);
+
+        const formSend = new FormData()
+        formSend.append('id_alumno', id_alumno)
+        formSend.append('validar', 'empezoExamen')
+        fetch('views/ajax/registro.php', {
+            method: 'POST',
+            body: formSend
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data){
+                setTimeout(() => {
+                    loader.classList.remove('active')
+                    window.location.href = SERVERURL+'preguntas/1'
+                }, 500);
+            }
+        })
+
     })
 }
 

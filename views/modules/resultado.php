@@ -11,6 +11,8 @@
 
 <?php include_once('inc/title.php'); ?>
 
+<style>.flex{display:none !important}</style>
+
 <section class="datos">
     <div class="contenedor">
         <div class="datos_personales">
@@ -98,7 +100,7 @@
             <p class="msg">¡Culminó la prueba!</p>
             <p>Los resultados serán enviados por correo.</p>
             <br><br>
-            <div class="flex">
+            <div class="flex" style="display: none !important">
                 <div>
                     <p>Respuestas acertadas:</p>
                     <span><?php echo $respuestas_acertadas; ?>/50</span>

@@ -5,12 +5,14 @@ require_once('conexion.php');
 class RegistroModel
 {
 
-    public static function guardarAlumnoMdl($n, $c)
+    public static function guardarAlumnoMdl($n, $c, $e, $now)
     {
 
-        $stmt = Conexion::conectar()->prepare("INSERT INTO alumnos (nombre_completo, nro_colegiatura) VALUES(:nombre_completo, :nro_colegiatura)");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO alumnos (nombre_completo, nro_colegiatura, estado, hora_inicio) VALUES(:nombre_completo, :nro_colegiatura, :estado, :hora_inicio)");
         $stmt->bindParam(":nombre_completo", $n, PDO::PARAM_STR);
         $stmt->bindParam(":nro_colegiatura", $c, PDO::PARAM_INT);
+        $stmt->bindParam(":estado", $e, PDO::PARAM_INT);
+        $stmt->bindParam(":hora_inicio", $now, PDO::PARAM_STR);
         return $stmt->execute() ? true : false;
         $stmt = "";
     }
@@ -102,6 +104,33 @@ class RegistroModel
         $stmt -> bindParam(":nota_final", $nf, PDO::PARAM_STR);
         $stmt -> bindParam(":id_alumno", $id_alumno, PDO::PARAM_INT);
         return $stmt->execute() ? true : false;
+        $stmt = "";
+    }
+
+    public static function cambiarEstadoExamenMdl($id_alumno, $estado)
+    {
+        $stmt = Conexion::conectar()->prepare("UPDATE alumnos SET estado=:estado WHERE id=:id");
+        $stmt -> bindParam(":estado", $estado, PDO::PARAM_INT);
+        $stmt -> bindParam(":id", $id_alumno, PDO::PARAM_INT);
+        return $stmt->execute() ? true : false;
+        $stmt = "";
+    }
+
+    public static function tiempoInicioExamenMdl($id_alumno, $now)
+    {
+        $stmt = Conexion::conectar()->prepare("UPDATE alumnos SET hora_inicio=:hora_inicio WHERE id=:id");
+        $stmt -> bindParam(":hora_inicio", $now, PDO::PARAM_STR);
+        $stmt -> bindParam(":id", $id_alumno, PDO::PARAM_INT);
+        return $stmt->execute() ? true : false;
+        $stmt = "";
+    }
+
+    public static function selectAlumnoByCode($colegiatura)
+    {
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM alumnos WHERE nro_colegiatura=:nro_colegiatura LIMIT 1");
+        $stmt->bindParam(":nro_colegiatura", $colegiatura, PDO::PARAM_INT);
+        $stmt -> execute();
+        return $stmt->fetch();
         $stmt = "";
     }
 

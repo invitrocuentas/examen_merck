@@ -27,6 +27,11 @@ class Registro{
         echo json_encode($respuesta);
     }
 
+    public function empezoExamenAjax(){
+        $respuesta = RegistroController::empezoExamenCtrl($this->vars);
+        echo json_encode($respuesta);
+    }
+
 }
 
 $e = new Registro();
@@ -50,6 +55,11 @@ if($_POST['validar'] == 'guardarTiempo'){
 if($_POST['validar'] == 'opcionMarcada'){
     $e->vars = $_POST;
     $e->opcionMarcadaAjax();
+}
+
+if($_POST['validar'] == 'empezoExamen'){
+    $e->vars = $_POST;
+    $e->empezoExamenAjax();
 }
 
 ?>

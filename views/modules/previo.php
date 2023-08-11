@@ -7,11 +7,18 @@
     }
 
     $alumno = $_SESSION['alumno'];
+
+    //echo $alumno['time'];
+
+    /*if(intval($alumno['estado']) == 1){
+        header("Location: ".SERVERURL);
+    }*/
 ?>
 
 <?php include_once('inc/title.php'); ?>
 
 <section class="datos">
+    <input type="hidden" name="id_alumno" value="<?php echo $alumno['id']; ?>">
     <div class="contenedor">
         <div class="datos_personales">
             <p>Datos Personales</p>
@@ -31,7 +38,16 @@
     <div class="contenedor">
         <div class="row">
             <div class="col">
-                <p>Asegúrate de marcar todas las preguntas antes de enviar el formulario:</p>
+                <!-- <p>Asegúrate de marcar todas las preguntas antes de enviar el formulario:</p> -->
+                <p>Bienvenido al Examen Virtual del Curso Integral de Reproducción Asistida.</p>
+                <ul>
+                    <li>Usted tendrá 1 hora y 30 minutos para completar el total de 50 preguntas del cuestionario.</li>
+                    <li>En la prueba no existen preguntas con puntaje negativo, y podrá saltar las que necesite en caso de no conocer la respusta.</li>
+                    <li>Las respuestas cuentan con autoguardado al momento de hacer clic en “siguiente”, y el formulario se finaliza al culminar la pregunta número 50.</li>
+                    <li>El examen está programado para tener una duración máxima hasta las 3.30 p.m.</li>
+                    <li>En caso de saltar alguna pregunta para contestar al finalizar el examen, podrá volver a ella haciendo clic en el número de pregunta (no estará sombrada).</li>
+                </ul>
+                </p>
             </div>
             <div class="col">
                 <div class="timer">

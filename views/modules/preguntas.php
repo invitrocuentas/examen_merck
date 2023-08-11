@@ -12,6 +12,8 @@
     $nro = str_replace('preguntas/', '', $cadena);
 
     $p = new RegistroController();
+
+    //var_dump($alumno);
 ?>
 
 <style>button.active{background: #137fd3;border-color: #137fd3;}</style>
@@ -75,6 +77,10 @@
 <?php 
     $results = $p->traerResultadoCtrl($alumno['id']);
     $respuestas_contestadas = json_decode($results['rptas']);
+
+    $opcionElegida = $respuestas_contestadas[$nro-1]->respuesta;
+    //echo $opcionElegida;
+
     $rptas_cntstds = [];
 
     foreach($respuestas_contestadas as $rc){
@@ -262,7 +268,18 @@
                             //var_dump($opcion);
                         ?>
                         <div class="opt opt_<?php echo $o+1; ?>">
+
+                            <?php if($opcion->opcion_letra == $opcionElegida): ?>
+
+                            <input type="radio" name="p_<?php echo $nro; ?>" value="<?php echo $opcion->opcion_letra ?>" checked><label for="<?php echo $opcion->opcion_letra ?>"><?php echo ucwords($opcion->opcion_letra).'. '.$opcion->opcion_texto ?></label>
+
+                            <?php else: ?>
+
                             <input type="radio" name="p_<?php echo $nro; ?>" value="<?php echo $opcion->opcion_letra ?>"><label for="<?php echo $opcion->opcion_letra ?>"><?php echo ucwords($opcion->opcion_letra).'. '.$opcion->opcion_texto ?></label>
+
+                            <?php endif; ?>
+
+
                         </div>
                         <?php endforeach; endif; ?>
                     </div>

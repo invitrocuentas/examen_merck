@@ -7,22 +7,51 @@ class RegistroController
     {
         $n = $vars['nombres'];
         $c = $vars['nro_colegiatura'];
-        $respuesta = RegistroModel::guardarAlumnoMdl($n, $c);
 
-        if($respuesta){
+        date_default_timezone_set('America/Lima');
+        $now = date('Y-m-d h:i:s');
 
-            $respuesta2 = RegistroModel::selectAlumnoMdl($n, $c);
+        //validar si el usuario ya existe en la bd
+        $validacion = RegistroModel::selectAlumnoByCode($c);
 
-            session_start();
-            $_SESSION['alumno']['id'] = $respuesta2['id'];
-            $_SESSION['alumno']['nombre'] = $respuesta2['nombre_completo'];
-            $_SESSION['alumno']['codigo'] = $respuesta2['nro_colegiatura'];
+        if($validacion){
 
+            if($validacion['estado'] == 1){ //que entre
 
-            $contenido = '[{"pregunta":1,"respuesta":""},{"pregunta":2,"respuesta":""},{"pregunta":3,"respuesta":""},{"pregunta":4,"respuesta":""},{"pregunta":5,"respuesta":""},{"pregunta":6,"respuesta":""},{"pregunta":7,"respuesta":""},{"pregunta":8,"respuesta":""},{"pregunta":9,"respuesta":""},{"pregunta":10,"respuesta":""},{"pregunta":11,"respuesta":""},{"pregunta":12,"respuesta":""},{"pregunta":13,"respuesta":""},{"pregunta":14,"respuesta":""},{"pregunta":15,"respuesta":""},{"pregunta":16,"respuesta":""},{"pregunta":17,"respuesta":""},{"pregunta":18,"respuesta":""},{"pregunta":19,"respuesta":""},{"pregunta":20,"respuesta":""},{"pregunta":21,"respuesta":""},{"pregunta":22,"respuesta":""},{"pregunta":23,"respuesta":""},{"pregunta":24,"respuesta":""},{"pregunta":25,"respuesta":""},{"pregunta":26,"respuesta":""},{"pregunta":27,"respuesta":""},{"pregunta":28,"respuesta":""},{"pregunta":29,"respuesta":""},{"pregunta":30,"respuesta":""},{"pregunta":31,"respuesta":""},{"pregunta":32,"respuesta":""},{"pregunta":33,"respuesta":""},{"pregunta":34,"respuesta":""},{"pregunta":35,"respuesta":""},{"pregunta":36,"respuesta":""},{"pregunta":37,"respuesta":""},{"pregunta":38,"respuesta":""},{"pregunta":39,"respuesta":""},{"pregunta":40,"respuesta":""},{"pregunta":41,"respuesta":""},{"pregunta":42,"respuesta":""},{"pregunta":43,"respuesta":""},{"pregunta":44,"respuesta":""},{"pregunta":45,"respuesta":""},{"pregunta":46,"respuesta":""},{"pregunta":47,"respuesta":""},{"pregunta":48,"respuesta":""},{"pregunta":49,"respuesta":""},{"pregunta":50,"respuesta":""}]';
-            $respuesta3 = RegistroModel::registrarRespuestasVacias($respuesta2['id'], $contenido);
+                return true;
 
-            return $respuesta3;
+            }elseif($validacion['estado'] == 2){ //que entre
+
+                return 'sin completar';
+
+            }else{ //ya hizo el examen
+
+                return "ya lo dio";
+
+            }
+
+        }else{
+
+            $e = 1;
+            $respuesta = RegistroModel::guardarAlumnoMdl($n, $c, $e, $now);
+
+            if($respuesta){
+
+                $respuesta2 = RegistroModel::selectAlumnoMdl($n, $c);
+
+                session_start();
+                $_SESSION['alumno']['id'] = $respuesta2['id'];
+                $_SESSION['alumno']['nombre'] = $respuesta2['nombre_completo'];
+                $_SESSION['alumno']['codigo'] = $respuesta2['nro_colegiatura'];
+                $_SESSION['alumno']['estado'] = $respuesta2['estado'];
+                //$_SESSION['alumno']['time'] = $respuesta2['hora_inicio'];
+
+                $contenido = '[{"pregunta":1,"respuesta":""},{"pregunta":2,"respuesta":""},{"pregunta":3,"respuesta":""},{"pregunta":4,"respuesta":""},{"pregunta":5,"respuesta":""},{"pregunta":6,"respuesta":""},{"pregunta":7,"respuesta":""},{"pregunta":8,"respuesta":""},{"pregunta":9,"respuesta":""},{"pregunta":10,"respuesta":""},{"pregunta":11,"respuesta":""},{"pregunta":12,"respuesta":""},{"pregunta":13,"respuesta":""},{"pregunta":14,"respuesta":""},{"pregunta":15,"respuesta":""},{"pregunta":16,"respuesta":""},{"pregunta":17,"respuesta":""},{"pregunta":18,"respuesta":""},{"pregunta":19,"respuesta":""},{"pregunta":20,"respuesta":""},{"pregunta":21,"respuesta":""},{"pregunta":22,"respuesta":""},{"pregunta":23,"respuesta":""},{"pregunta":24,"respuesta":""},{"pregunta":25,"respuesta":""},{"pregunta":26,"respuesta":""},{"pregunta":27,"respuesta":""},{"pregunta":28,"respuesta":""},{"pregunta":29,"respuesta":""},{"pregunta":30,"respuesta":""},{"pregunta":31,"respuesta":""},{"pregunta":32,"respuesta":""},{"pregunta":33,"respuesta":""},{"pregunta":34,"respuesta":""},{"pregunta":35,"respuesta":""},{"pregunta":36,"respuesta":""},{"pregunta":37,"respuesta":""},{"pregunta":38,"respuesta":""},{"pregunta":39,"respuesta":""},{"pregunta":40,"respuesta":""},{"pregunta":41,"respuesta":""},{"pregunta":42,"respuesta":""},{"pregunta":43,"respuesta":""},{"pregunta":44,"respuesta":""},{"pregunta":45,"respuesta":""},{"pregunta":46,"respuesta":""},{"pregunta":47,"respuesta":""},{"pregunta":48,"respuesta":""},{"pregunta":49,"respuesta":""},{"pregunta":50,"respuesta":""}]';
+                $respuesta3 = RegistroModel::registrarRespuestasVacias($respuesta2['id'], $contenido);
+
+                return $respuesta3;
+            }
+
         }
 
 
@@ -33,7 +62,28 @@ class RegistroController
         $id = $vars['id_alumno'];
         $timer = $vars['timer'];
         $respuesta = RegistroModel::guardarTimerMdl($id, $timer);
-        return $respuesta;
+        if($respuesta){
+            $respuesta2 = RegistroModel::cambiarEstadoExamenMdl($id, 3);
+
+            // session_start();
+            // $_SESSION['alumno']['time'] = $respuesta2['hora_inicio'];
+
+            return $respuesta2;
+        }
+    }
+
+    public static function empezoExamenCtrl($vars)
+    {
+        $id = $vars['id_alumno'];
+        $respuesta = RegistroModel::cambiarEstadoExamenMdl($id, 2);
+
+        date_default_timezone_set('America/Lima');
+        $now = date('Y-m-d h:i:s');
+
+        if($respuesta){
+            $respuesta2 = RegistroModel::tiempoInicioExamenMdl($id, $now);
+            return $respuesta2;
+        }
     }
 
     public static function opcionMarcadaCtrl($vars){

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-08-2023 a las 21:28:49
+-- Tiempo de generación: 11-08-2023 a las 23:18:13
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.1.17
 
@@ -31,8 +31,29 @@ CREATE TABLE `alumnos` (
   `id` int(11) NOT NULL,
   `nombre_completo` varchar(255) NOT NULL,
   `nro_colegiatura` int(50) NOT NULL,
-  `hora_inicio` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `estado` int(2) NOT NULL,
+  `hora_inicio` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estados`
+--
+
+CREATE TABLE `estados` (
+  `id` int(11) NOT NULL,
+  `txt` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `estados`
+--
+
+INSERT INTO `estados` (`id`, `txt`) VALUES
+(1, 'el usuario ha ingresado'),
+(2, 'el usuario ha dado el examen pero no lo ha completado'),
+(3, 'el usuario completo el examen\r\n');
 
 -- --------------------------------------------------------
 
@@ -126,6 +147,13 @@ CREATE TABLE `respuestas` (
 -- Indices de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `estado` (`estado`);
+
+--
+-- Indices de la tabla `estados`
+--
+ALTER TABLE `estados`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -148,7 +176,13 @@ ALTER TABLE `respuestas`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+
+--
+-- AUTO_INCREMENT de la tabla `estados`
+--
+ALTER TABLE `estados`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
@@ -160,7 +194,17 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `alumnos`
+--
+ALTER TABLE `alumnos`
+  ADD CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`estado`) REFERENCES `estados` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,4 +1,9 @@
-<?php include_once('inc/title.php'); ?>
+<?php 
+    if(isset($_SESSION)){
+        session_destroy();
+    }
+    include_once('inc/title.php'); 
+?>
 
 <section class="datos">
     <div class="contenedor">
@@ -22,11 +27,17 @@
 <div class="disclaimer">
     <div class="contenedor">
         <div class="disclaimer_txt">
-            <p><b>Disclaimer:</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
+            <p><b>Consentimiento informado:</b>Para nosotros es muy importante mantener la privacidad de los usuarios del presente examen virtual y la seguridad de su información personal. Merck Peruana, S.A., con domicilio en Av. Manuel Olguin 325, Oficina 1702, Surco, Lima, Perú (en adelante “Merck”), e IN VITRO MARKETING SAC (en adelante “InVitro Agencia”), con domicilio en Calle Pomalca 455, Santiago de Surco, Lima – Perú, para los fines previstos en la legislación aplicable sobre protección de datos, son las entidades responsables del tratamiento de sus datos personales.</p>
             <button id="cookies">Acepto</button>
         </div>
         <div class="w-100">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Para los fines del presente examen, se le informa lo siguiente:</p>
+            <ul>
+                <li>InVitro Agencia será el responsable del tratamiento de sus datos personales y respuestas que brinde en el cuestionario durante el sábado 12 de agosto en el horario de 2 p.m. a 4 p.m.</li>
+                <li>El examen realizado se realizará con cámara encendida y será grabado para fines de asegurar el cumplimiento de las condiciones necesarias para el desarrollo del mismo, por lo que deberá realizarlo con cámara encendida en la reunión de Teams.</li>
+                <li>El examen contará con 50 preguntas en total, cada respuesta correcta sumará 0.4 puntos para su nota final del cuestionario. No hay preguntas con puntaje negativo.</li>
+                <li>Solo tendrá 1 oportunidad de realizar el cuestionario.</li>
+            </ul>
         </div>
     </div>
 </div>
