@@ -56,4 +56,43 @@ class RegistroModel
         $stmt = "";
     }
 
+    public static function traerPreguntaMdl($table, $id)
+    {
+
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE id=:id LIMIT 1");
+        $stmt->bindParam(":id", $id, PDO::PARAM_INT);
+        $stmt -> execute();
+        return $stmt->fetch();
+        $stmt = "";
+    }
+
+    public static function guardarTimerMdl($id_alumno, $timer)
+    {
+        $stmt = Conexion::conectar()->prepare("UPDATE respuestas SET timer=:timer WHERE id_alumno=:id_alumno");
+        $stmt -> bindParam(":timer", $timer, PDO::PARAM_STR);
+        $stmt -> bindParam(":id_alumno", $id_alumno, PDO::PARAM_INT);
+        return $stmt->execute() ? true : false;
+        $stmt = "";
+    }
+
+    public static function traerResultadoMdl($table, $id_alumno)
+    {
+
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM $table WHERE id_alumno=:id_alumno LIMIT 1");
+        $stmt->bindParam(":id_alumno", $id_alumno, PDO::PARAM_INT);
+        $stmt -> execute();
+        return $stmt->fetch();
+        $stmt = "";
+    }
+
+    public static function validarResultadoPuntajeMdl($id_pregunta)
+    {
+
+        $stmt = Conexion::conectar()->prepare("SELECT * FROM preguntas WHERE id=:id LIMIT 1");
+        $stmt->bindParam(":id", $id_pregunta, PDO::PARAM_INT);
+        $stmt -> execute();
+        return $stmt->fetch();
+        $stmt = "";
+    }
+
 }

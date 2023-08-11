@@ -23,7 +23,8 @@
                 <button class="modal_close">Volver a la pregunta actual</button>
 
                 <?php if($nro == 50): ?>
-                    <a href="<?php echo SERVERURL ?>resultado">Sí, finalizar</a>
+                    <!-- <a href="<?php //echo SERVERURL ?>resultado">Sí, finalizar</a> -->
+                    <button id="toFinishExam">Sí, finalizar</button>
                 <?php else: ?>
                     <a href="<?php echo SERVERURL ?>preguntas/<?php echo $nro+1; ?>">Sí, continuar a la siguiente</a>
                 <?php endif; ?>
@@ -212,27 +213,38 @@
                     </button>
                 </div>
             </div>
+            <?php 
+            
+                $p = new RegistroController();
+                $p = $p->traerPreguntaCtrl($nro);
+
+            ?>
             <div class="cuestionario_respuestas">
                 <div class="pregunta">
-                    <h2>1.¿Vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</h2>
+
+                    <h2><?php echo $nro.'. '.$p['pregunta']; ?></h2>
+
                     <div class="options">
-                        <div class="opt opt_1">
-                            <input type="radio" id="html" name="p_1" value="a"><label for="a">A.Dolorem eum fugiat quo voluptas nulla pariatur.</label>
+                        <?php 
+                            if( isset($p['opciones']) && !empty(json_decode($p['opciones'])) ): 
+                            $opciones = json_decode($p['opciones']);
+                            foreach($opciones as $o => $opcion):
+                            //var_dump($opcion);
+                        ?>
+                        <div class="opt opt_<?php echo $o+1; ?>">
+                            <input type="radio" name="p_<?php echo $nro; ?>" value="<?php echo $opcion->opcion_letra ?>"><label for="<?php echo $opcion->opcion_letra ?>"><?php echo ucwords($opcion->opcion_letra).'. '.$opcion->opcion_texto ?></label>
                         </div>
-                        <div class="opt opt_2">
-                            <input type="radio" id="html" name="p_1" value="b"><label for="b">B.Dolorem eum fugiat quo voluptas nulla pariatur.</label>
-                        </div>
-                        <div class="opt opt_3">
-                            <input type="radio" id="html" name="p_1" value="c"><label for="c">C.Dolorem eum fugiat quo voluptas nulla pariatur.</label>
-                        </div>
+                        <?php endforeach; endif; ?>
                     </div>
-                    <button type="button" class="nxt">
-                        <?php if($nro == 50): ?>
+                    <?php if($nro == 50): ?>
+                    <button type="button" class="nxt to_finish">
                         Finalizar
-                        <?php else: ?>
-                        Siguiente    
-                        <?php endif; ?>
                     </button>
+                    <?php else: ?>
+                    <button type="button" class="nxt to_next">
+                        Siguiente    
+                    </button>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

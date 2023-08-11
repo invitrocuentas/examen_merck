@@ -23,7 +23,11 @@ if(document.querySelector('.datos_form')){
         .then(data => {
 
             if(data){
-                window.location.href = SERVERURL+'previo'
+                localStorage.removeItem('startTime');
+                
+                setTimeout(function(){
+                    window.location.href = SERVERURL+'previo'
+                }, 500)
             }
 
         })
@@ -57,14 +61,15 @@ function startTimer(duration, display) {
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
-        display.textContent = hours + ":" + minutes + ":" + seconds;
+        //display.textContent = hours + ":" + minutes + ":" + seconds;
+        display.textContent = hours + ":" + minutes + " hrs";
 
-        if (remainingTime <= 0) {
+        /*if (remainingTime <= 0) {
             clearInterval(timerInterval);
             localStorage.removeItem("startTime");
             // Redirigir cuando termine el temporizador
             window.location.href = SERVERURL+'resultado'; // Reemplaza con la URL deseada
-        }
+        }*/
     }
 
     var timerInterval = setInterval(updateTimer, 1000);
@@ -99,6 +104,13 @@ if(document.querySelector('.cuestionario_preguntas')){
             let nro = parseInt(e.currentTarget.querySelector('p').textContent)
             window.location.href = SERVERURL+`preguntas/${nro}`
         })
+    })
+}
+
+if(document.querySelector('#toFinishExam')){
+    document.querySelector('#toFinishExam').addEventListener('click', (e)=>{
+        e.preventDefault();
+        guardarTimer( parseInt(document.querySelector('[name="id_alumno"]').value) )
     })
 }
 
@@ -144,14 +156,16 @@ if(document.querySelector('.cuestionario_respuestas')){
             }
         })
 
-        console.log(validar)
+        //console.log(validar)
 
         if(validar!=0){
 
             if(pregunta != 50){
                 window.location.href = SERVERURL+`preguntas/${pregunta+1}`
             }else{
-                window.location.href = SERVERURL+'resultado'
+
+                guardarTimer(id_alumno);
+
             }
 
         }else{
@@ -171,6 +185,28 @@ if(document.querySelector('.cuestionario_respuestas')){
             }
 
         })
+    })
+
+}
+
+function guardarTimer(id_alumno){
+
+    console.log('alumno'+id_alumno)
+
+    const formSend = new FormData()
+    formSend.append('id_alumno', id_alumno)
+    formSend.append('timer', document.querySelector('#temporizador').textContent)
+    formSend.append('validar', 'guardarTiempo')
+    fetch('../views/ajax/registro.php', {
+        method: 'POST',
+        body: formSend
+    })
+    .then(res => res.json())
+    .then(data => {
+        //console.log(data)
+        if(data){
+            window.location.href = SERVERURL+'resultado'
+        }
     })
 
 }

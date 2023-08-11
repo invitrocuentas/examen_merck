@@ -10,6 +10,10 @@ $gris: #F5F5F5;
 $gris2: #66666D;
 $gris3: #C7C7C8;
 
+$tablet: 1150px;
+$cel: 800px;
+$app: 590px;
+
 %centrar-vertical{
     display: flex;
     flex-direction: column;
@@ -66,6 +70,11 @@ header{
     background: none;
     margin-bottom: 20px;
     padding-block: 20px;
+    @media (max-width: $tablet){
+        .logo{
+            max-width: 250px;
+        }
+    }
 }
 
 .auspicio{
@@ -89,6 +98,10 @@ header{
     position: relative;
     padding-block: 2rem;
     @extend %centrar-vertical;
+    @media (max-width: $tablet){
+        min-height: 150px;
+        padding-block: 1.75rem;
+    }
     h1{
         text-align: center;
         font-family: 'GB';
@@ -123,6 +136,10 @@ header{
         border-radius: 10px;
         padding: 2rem 3.5rem;
 
+        @media (max-width: $tablet){
+            padding: 2rem;
+        }
+
         &>p{
             margin-bottom: 14px;
             font-weight: bold;
@@ -143,6 +160,13 @@ header{
         grid-template-columns: 1fr 1fr 190px;
         grid-gap: 20px;
         align-items: flex-end;
+        @media (max-width: $tablet){
+            grid-gap: 14px;
+            grid-template-columns: repeat(2, 1fr);
+        }
+        @media (max-width: $app){
+            grid-template-columns: 100%;
+        }
         div{
             width: 100%;
         }
@@ -181,12 +205,21 @@ header{
             background: $azul;
             width: 100%;
             color: white;
+            @media (max-width: $tablet){
+                grid-column: span 2;
+            }
+            @media (max-width: $app){
+                grid-column: 1/2 !important;
+            }
         }
 
         &.with_info{
             grid-template-columns: repeat(2, 1fr);
             label{
                 display: none;
+            }
+            @media (max-width: $app){
+                grid-template-columns: 100%;
             }
         }
     }
@@ -198,6 +231,19 @@ header{
     background: white;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
     min-height: 132px;
+
+    @media (max-width: $cel){
+        .col{
+            width: 100%;
+            p{
+                text-align: center;
+            }
+        }
+        .timer{
+            margin: 20px auto 0;
+        }
+    }
+
     p{
         font-family: 'Inter', sans-serif;
         font-weight: 400;
@@ -261,6 +307,10 @@ header{
     min-height: 80vh;
     &_preguntas{
         width: 230px;
+        @media (max-width: $tablet){
+            width: 100%;
+            margin-bottom: 36px;
+        }
         h1{
             font-family: 'Inter', sans-serif;
             font-weight: 900;
@@ -272,6 +322,27 @@ header{
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             grid-gap: 8px;
+            @media (max-width: $tablet){
+                grid-template-columns: repeat(20, 1fr);
+            }
+            @media (max-width: 920px){
+                grid-template-columns: repeat(17, 1fr);
+            }
+            @media (max-width: 740px){
+                grid-template-columns: repeat(14, 1fr);
+            }
+            @media (max-width: 630px){
+                grid-template-columns: repeat(12, 1fr);
+            }
+            @media (max-width: 530px){
+                grid-template-columns: repeat(10, 1fr);
+            }
+            @media (max-width: 470px){
+                grid-template-columns: repeat(8, 1fr);
+            }
+            @media (max-width: 320px){
+                grid-template-columns: repeat(7, 1fr);
+            }
         }
         button{
             width: 100%;
@@ -292,6 +363,9 @@ header{
     }
     &_respuestas{
         width: calc(100% - 285px);
+        @media (max-width: $tablet){
+            width: 100%;
+        }
     }
 }
 
@@ -375,19 +449,25 @@ header{
         text-align: left;
         font-family: 'Inter', sans-serif;
         font-weight: bold;
+        p{
+            font-weight: 100;
+            margin-top: 10px;
+        }
     }
     .options{
         margin-top: 28px;
         .opt{
             display: flex;
             flex-wrap: nowrap;
-            align-items: center;
+            align-items: flex-start;
             flex-direction: row;
             gap: 10px;
 
             input{
+                display: block;
                 width: 24px;
                 height: 24px;
+                aspect-ratio: 1/1;
             }
             label{
                 font-family: 'Inter', sans-serif;
@@ -395,7 +475,7 @@ header{
                 font-size: 1.1rem;
             }
             &:not(:last-child){
-                margin-bottom: 10px;
+                margin-bottom: 16px;
             }
         }
     }
@@ -410,6 +490,17 @@ header{
     padding: 3rem 0;
     &_txt{
         text-align: center;
+        &>div{
+            width: fit-content;
+        }
+    }
+    .flex{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 30px;
     }
     p{
         font-family: 'Inter', sans-serif;
@@ -431,5 +522,55 @@ header{
         font-size: 40px;
         font-weight: bold;
         margin-bottom: 20px;
+    }
+}
+
+.disclaimer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 3;
+    background: #FFF4D6;
+    padding-block: 3rem;
+    &_txt{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        p{
+            width: calc(100% - 250px);
+            @media (max-width: $tablet){
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+        button{
+            @extend %button;
+            max-width: 200px;
+            @media (max-width: $tablet){
+                margin: 0 auto;
+            }
+        }
+    }
+    p{
+        font-family: 'Inter', sans-serif;
+        text-align: justify;
+        font-weight: 400;
+        @media (max-width: $tablet){
+            font-size: 14.6px;
+        }
+    }
+    b{
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        @media (max-width: $tablet){
+            margin-bottom: 6px;
+        }
+    }
+    .w-100{
+        margin-top: 20px;
+        width: 100%;
     }
 }

@@ -1,24 +1,4 @@
-<header>
-    <div class="contenedor">
-        <div class="row start">
-            <div class="col">
-                <img src="<?php echo IMG; ?>/logo-sociedad.svg" alt="Sociedad Peruana de Endocrinología" title="Sociedad Peruana de Endocrinología">
-            </div>
-            <div class="col">
-                <div class="auspicio">
-                    <p>Auspiciado por</p>
-                    <img src="<?php echo IMG; ?>/logo-merck.svg" alt="Merck" title="Merck">
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section class="title">
-    <div class="contenedor">
-        <h1>CURSO LOREM IPSUM<br>"LOREM IPSUM LOREM IPSUM LOREM IPSUM"</h1>
-    </div>
-</section>
+<?php include_once('inc/title.php'); ?>
 
 <section class="datos">
     <div class="contenedor">
@@ -38,3 +18,34 @@
         </div>
     </div>
 </section>
+
+<div class="disclaimer">
+    <div class="contenedor">
+        <div class="disclaimer_txt">
+            <p><b>Disclaimer:</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in.</p>
+            <button id="cookies">Acepto</button>
+        </div>
+        <div class="w-100">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const miDiv = document.querySelector('.disclaimer');
+    const botonOcultar = document.getElementById("cookies");
+
+    // Comprobar si hay un valor en localStorage para ocultar el div
+    const ocultarDiv = localStorage.getItem("ocultarDiv");
+    if (ocultarDiv === "true") {
+        miDiv.style.display = "none";
+    }
+
+    // Manejador de clic para el botón
+    botonOcultar.addEventListener("click", function() {
+        miDiv.style.display = "none";
+        localStorage.setItem("ocultarDiv", "true");
+    });
+});
+</script>

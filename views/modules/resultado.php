@@ -9,27 +9,7 @@
     $alumno = $_SESSION['alumno'];
 ?>
 
-<header>
-    <div class="contenedor">
-        <div class="row start">
-            <div class="col">
-                <img src="<?php echo IMG; ?>/logo-sociedad.svg" alt="Sociedad Peruana de Endocrinología" title="Sociedad Peruana de Endocrinología">
-            </div>
-            <div class="col">
-                <div class="auspicio">
-                    <p>Auspiciado por</p>
-                    <img src="<?php echo IMG; ?>/logo-merck.svg" alt="Merck" title="Merck">
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<section class="title">
-    <div class="contenedor">
-        <h1>CURSO LOREM IPSUM<br>"LOREM IPSUM LOREM IPSUM LOREM IPSUM"</h1>
-    </div>
-</section>
+<?php include_once('inc/title.php'); ?>
 
 <section class="datos">
     <div class="contenedor">
@@ -47,6 +27,35 @@
     </div>
 </section>
 
+<?php         
+    $t = new RegistroController();
+    $t1 = $t->traerResultadoCtrl($alumno['id']);
+
+    if(empty($t1)){
+        header("Location: ".SERVERURL);
+    }
+
+    function restarHoras($hora1, $hora2) {
+        $formato = 'H:i'; // Formato de horas
+    
+        $time1 = DateTime::createFromFormat($formato . ' \h\r\s', $hora1);
+        $time2 = DateTime::createFromFormat($formato . ' \h\r\s', $hora2);
+    
+        $interval = $time1->diff($time2);
+    
+        $horas = $interval->h;
+        $minutos = $interval->i;
+    
+        $resultado = sprintf('%02d:%02d hrs', $horas, $minutos);
+        return $resultado;
+    }
+    
+    $hora1 = '02:00 hrs';
+    $hora2 = $t1['timer'];
+    $timer = restarHoras($hora1, $hora2);
+    
+?>
+
 <section class="aviso finalizado">
     <div class="contenedor">
         <div class="row center">
@@ -57,7 +66,7 @@
                 <div class="timer">
                     <div class="timer_box">
                         <img src="<?php echo IMG; ?>/icon-reloj.svg" alt="Temporizador" title="Temporizador">
-                        <span>02:00 hrs</span>
+                        <span><?php echo $timer; ?></span>
                     </div>
                 </div>
             </div>
@@ -65,13 +74,34 @@
     </div>
 </section>
 
+<?php 
+
+    $respuestas_acertadas = 0;
+    
+    foreach(json_decode($t1['rptas']) as $item){
+        $t2 = $t->validarResultadoPuntaje($item->pregunta, $item->respuesta);
+        $respuestas_acertadas += $t2;
+    }
+
+    $nota_final = round($respuestas_acertadas*0.4);
+
+?>
+
 <section class="resultado">
     <div class="contenedor">
         <div class="resultado_txt">
-            <p class="msg">¡Felicitaciones culminó la prueba!</p>
-            <p>Respuestas acertadas:</p>
-            <span>58/60</span>
-            <p>Resultado: <b>APROBADO</b></p>
+            <p class="msg">¡Culminó la prueba!</p>
+            <div class="flex">
+                <div>
+                    <p>Respuestas acertadas:</p>
+                    <span><?php echo $respuestas_acertadas; ?>/50</span>
+                </div>
+                <div>
+                    <p>Nota final:</p>
+                    <span><?php echo $nota_final; ?>/20</span>
+                </div>
+            </div>
+            <p>Resultado: <?php echo $nota_final > 10 ? '<b>APROBADO</b>' : '<b style="color: red">DESAPROBADO</b>'; ?></p>
         </div>
     </div>
 </section>

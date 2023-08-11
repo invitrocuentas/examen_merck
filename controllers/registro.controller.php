@@ -28,6 +28,14 @@ class RegistroController
 
     }
 
+    public static function guardarTimerCtrl($vars)
+    {
+        $id = $vars['id_alumno'];
+        $timer = $vars['timer'];
+        $respuesta = RegistroModel::guardarTimerMdl($id, $timer);
+        return $respuesta;
+    }
+
     public static function opcionMarcadaCtrl($vars){
         // seleccionar las rptas de dicho alumno
         $respuesta1 = RegistroModel::traerRptasMdl($vars['id_alumno']);
@@ -45,6 +53,32 @@ class RegistroController
 
         }
 
+    }
+
+    public static function traerPreguntaCtrl($id)
+    {
+        $table = "preguntas";
+        $respuesta = RegistroModel::traerPreguntaMdl($table, $id);
+        return $respuesta;
+    }
+
+    public static function traerResultadoCtrl($id)
+    {
+        $table = "respuestas";
+        $respuesta = RegistroModel::traerResultadoMdl($table, $id);
+        return $respuesta;
+    }
+
+    public static function validarResultadoPuntaje($pregunta, $respuesta_letra)
+    {
+        $sumatoria = 0;
+        $respuesta = RegistroModel::validarResultadoPuntajeMdl($pregunta);
+
+        if($respuesta_letra == $respuesta['opcion_correcta']){
+            $sumatoria = 1;
+        }
+
+        return $sumatoria;
     }
 
 }

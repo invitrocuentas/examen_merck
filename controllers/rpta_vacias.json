@@ -1,202 +1,22 @@
 [
     {
-        "pregunta": 1,
-        "respuesta": ""
+        "opcion_letra": "a",
+        "opcion_texto": "La calidad de los blastocistos no tiene un impacto sobre la respuesta inflamatoria en el diálogo embrión-endometrio."
     },
     {
-        "pregunta": 2,
-        "respuesta": ""
+        "opcion_letra": "b",
+        "opcion_texto": "No existen factores solubles secretados por el embrión antes de la implantación."
     },
     {
-        "pregunta": 3,
-        "respuesta": ""
+        "opcion_letra": "c",
+        "opcion_texto": "No hay una necesidad urgente por encontrar biomarcadores embrionarios no invasivos para la selección de embriones con mayor potencial de implantación."
     },
     {
-        "pregunta": 4,
-        "respuesta": ""
+        "opcion_letra": "d",
+        "opcion_texto": "El epidídimo crea un balance inmunológico durante la maduración espermática."
     },
     {
-        "pregunta": 5,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 6,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 7,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 8,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 9,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 10,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 11,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 12,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 13,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 14,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 15,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 16,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 17,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 18,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 19,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 20,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 21,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 22,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 23,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 24,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 25,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 26,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 27,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 28,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 29,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 30,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 31,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 32,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 33,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 34,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 35,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 36,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 37,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 38,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 39,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 40,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 41,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 42,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 43,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 44,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 45,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 46,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 47,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 48,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 49,
-        "respuesta": ""
-    },
-    {
-        "pregunta": 50,
-        "respuesta": ""
+        "opcion_letra": "e",
+        "opcion_texto": "Ninguna de las anteriores."
     }
 ]
