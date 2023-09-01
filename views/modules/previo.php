@@ -2,9 +2,9 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!$_SESSION['alumno']){
+    /*if(!$_SESSION['alumno']){
         header('Location: inicio');
-    }
+    }*/
 
     $alumno = $_SESSION['alumno'];
 
@@ -41,11 +41,11 @@
                 <!-- <p>Asegúrate de marcar todas las preguntas antes de enviar el formulario:</p> -->
                 <p>Bienvenido al Examen Virtual del Curso Integral de Reproducción Asistida.</p>
                 <ul>
-                    <li>Usted tendrá 1 hora y 30 minutos para completar el total de 50 preguntas del cuestionario.</li>
-                    <li>En la prueba no existen preguntas con puntaje negativo, y podrá saltar las que necesite en caso de no conocer la respusta.</li>
+                    <li>Usted tendrá 1 hora para completar el total de 50 preguntas del cuestionario.</li>
+                    <li>En la prueba no existen preguntas con puntaje negativo, y podrá saltar las que necesite en caso de no conocer la respuesta.</li>
                     <li>Las respuestas cuentan con autoguardado al momento de hacer clic en “siguiente”, y el formulario se finaliza al culminar la pregunta número 50.</li>
                     <li>El examen está programado para tener una duración máxima hasta las 3.30 p.m.</li>
-                    <li>En caso de saltar alguna pregunta para contestar al finalizar el examen, podrá volver a ella haciendo clic en el número de pregunta (no estará sombrada).</li>
+                    <li>En caso de saltar alguna pregunta para contestar al finalizar el examen, podrá volver a ella haciendo clic en el número de pregunta (no estará sombreada).</li>
                 </ul>
                 </p>
             </div>
@@ -54,7 +54,7 @@
                     <p>Tiempo para la prueba:</p>
                     <div class="timer_box">
                         <img src="<?php echo IMG; ?>/icon-reloj.svg" alt="Temporizador" title="Temporizador">
-                        <span>02:00 hrs</span>
+                        <span>01:10 hrs</span>
                     </div>
                 </div>
             </div>

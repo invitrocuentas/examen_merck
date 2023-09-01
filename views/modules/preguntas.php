@@ -2,9 +2,9 @@
     if(!isset($_SESSION)){
         session_start();
     }
-    if(!$_SESSION['alumno']){
+    /*if(!$_SESSION['alumno']){
         header('Location: inicio');
-    }
+    }*/
 
     $alumno = $_SESSION['alumno'];
 
@@ -23,7 +23,7 @@
     <div class="modal_box">
         <div class="modal_btn modal_close">+</div>
         <div class="modal_content">
-            <p>Aún no haz marcado la pregunta<br>¿Seguro que deseas continuar?</p>
+            <p>Aún no has marcado la pregunta<br>¿Seguro que deseas continuar?</p>
             <div>
                 <button class="modal_close">Volver a la pregunta actual</button>
 
@@ -63,7 +63,7 @@
                     <p>Tiempo restante:</p>
                     <div class="timer_box">
                         <img src="<?php echo IMG; ?>/icon-reloj.svg" alt="Temporizador" title="Temporizador">
-                        <span id="temporizador">00:00 hrs</span>
+                        <span id="temporizador">01:10:00 hrs</span>
                     </div>
                 </div>
             </div>

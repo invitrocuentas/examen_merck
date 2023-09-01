@@ -53,7 +53,7 @@
         return $resultado;
     }
     
-    $hora1 = '02:00:00 hrs';
+    $hora1 = '01:10:00 hrs';
     $hora2 = $t1['timer'];
     $timer = restarHoras($hora1, $hora2);
     
@@ -110,7 +110,7 @@
                     <span><?php echo $nota_final; ?>/20</span>
                 </div>
             </div>
-            <p>Resultado: <?php echo $nota_final > 10 ? '<b>APROBADO</b>' : '<b style="color: red">DESAPROBADO</b>'; ?></p>
+            <p style="display: none !important">Resultado: <?php echo $nota_final > 10 ? '<b>APROBADO</b>' : '<b style="color: red">DESAPROBADO</b>'; ?></p>
         </div>
     </div>
 </section>
@@ -128,7 +128,7 @@
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
         })
     }
     window.onpaint = subirResultados();

@@ -1,4 +1,5 @@
 <?php
+
     ob_start();
     require_once('core/core.php');
     require_once('controllers/enlacesController.php');

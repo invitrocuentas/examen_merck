@@ -22,7 +22,26 @@ class RegistroController
 
             }elseif($validacion['estado'] == 2){ //que entre
 
-                return 'sin completar';
+                $seleccionarUltimaRpta = RegistroModel::traerResultadoMdl('respuestas', $validacion['id']);
+                $yourArray = json_decode($seleccionarUltimaRpta['rptas']);
+
+                $lastNonEmptyResponseIndex = -1;
+
+                for ($i = count($yourArray) - 1; $i >= 0; $i--) {
+                    if (!empty($yourArray[$i]->respuesta)) {
+                        $lastNonEmptyResponseIndex = $i;
+                        break; // Encuentra el último elemento no vacío y sal del bucle
+                    }
+                }
+
+                if ($lastNonEmptyResponseIndex !== -1) {
+                    $lastNonEmptyResponseItem = $yourArray[$lastNonEmptyResponseIndex]->pregunta;
+                } else {
+                    $lastNonEmptyResponseItem = 1;
+                }
+
+                return $lastNonEmptyResponseItem;
+                //return 'sin completar';
 
             }else{ //ya hizo el examen
 

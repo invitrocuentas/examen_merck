@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="<?php echo SERVERURL;?>views/css/style.css">
     <title>Examen Merck</title>
     <script>const SERVERURL = '<?php echo SERVERURL;?>';</script>
+    <style>.credit{position:fixed}</style>
 </head>
 <body>
 

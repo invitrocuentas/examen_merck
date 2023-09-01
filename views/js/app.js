@@ -26,21 +26,21 @@ if(document.querySelector('.datos_form')){
         .then(res => res.json())
         .then(data => {
 
-            console.log(data);
+            
+            if((typeof data) == "number"){
+                loader.classList.remove('active');
+                console.log(data)
+
+                setTimeout(function(){
+                    window.location.href = SERVERURL+`preguntas/${parseInt(data) + 1}`
+                }, 500)   
+            }
 
             if(data == 'ya lo dio'){
                 localStorage.removeItem('startTime');
                 loader.classList.remove('active');
 
                 alert('Ya completó el examen.')
-            }
-
-            if(data == 'sin completar'){
-                loader.classList.remove('active');
-
-                setTimeout(function(){
-                    window.location.href = SERVERURL+'preguntas/1'
-                }, 500)
             }
 
             if(data == true){
@@ -119,19 +119,19 @@ function startTimer(duration, display) {
 
 window.onload = function () {
     if(document.querySelector('#temporizador')){
-        var twoHours = 2 * 60 * 60, // 2 horas en segundos
+        var oneHourThirtyMinutes = 1 * 70 * 60, // 1 hora 30 minutos en segundos
             display = document.querySelector('#temporizador');
     
         if (localStorage.getItem("startTime")) {
             var savedStartTime = parseInt(localStorage.getItem("startTime"));
             var currentTime = Date.now();
             var elapsedTime = Math.floor((currentTime - savedStartTime) / 1000);
-            twoHours -= elapsedTime;
+            oneHourThirtyMinutes -= elapsedTime;
         } else {
             localStorage.setItem("startTime", Date.now());
         }
     
-        startTimer(twoHours, display);
+        startTimer(oneHourThirtyMinutes, display);
     }
 };
 
