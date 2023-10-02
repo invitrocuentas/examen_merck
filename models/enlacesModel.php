@@ -6,7 +6,7 @@ class EnlacesModelo
     protected function enlacesModel($enlace)
     {
         // echo $enlace;
-
+       
         if (file_exists("views/modules/" . $enlace . ".php")) {
             $module = "views/modules/" . $enlace . ".php";
         } elseif ($enlace == 'inicio') {
